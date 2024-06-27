@@ -99,6 +99,12 @@
       <artifactId>connect-json</artifactId>
       <version>3.6.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>io.confluent</groupId>
+      <artifactId>kafka-json-serializer</artifactId>
+      <version>4.1.1</version>
+    </dependency>
   </dependencies>
 
 </project>
