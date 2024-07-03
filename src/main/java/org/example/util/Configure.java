@@ -39,7 +39,6 @@ public class Configure {
             if(matcher.find()){
                 String group = matcher.group().substring(2, matcher.group().length()-1);
                 this.properties.put(key,System.getenv(group));
-                System.out.println("stop");
             }
         }
     }
