@@ -1,5 +1,8 @@
 package org.example.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +15,7 @@ import java.util.regex.Pattern;
 public class Configure {
 
     private static Configure configure;
+    private static final Logger logger = LoggerFactory.getLogger(Configure.class);
     private Properties properties;
 
     private Configure(){
@@ -23,6 +27,7 @@ public class Configure {
         try{
             inputStream = new FileInputStream(path);
             this.properties.load(inputStream);
+            logger.debug(path);
             this.readSystemEnvironments();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
