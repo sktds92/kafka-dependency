@@ -1,8 +1,6 @@
 package org.example.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import org.example.common.AbsSdnObject;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,10 +10,8 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Configure {
-
+public class Configure extends AbsSdnObject {
     private static Configure configure;
-    private static final Logger logger = LoggerFactory.getLogger(Configure.class);
     private Properties properties;
 
     private Configure(){
