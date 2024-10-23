@@ -13,7 +13,7 @@ public class ErrorProducer extends AbsSdnObject {
 
     private ErrorProducer(Properties properties){
         this.properties = properties;
-        this.kafkaProducer = new KafkaProducer<>(properties);
+        this.kafkaProducer = new KafkaProducer(properties);
     }
     public static synchronized ErrorProducer getInstance(Properties properties){
         if(instance == null){
@@ -30,7 +30,7 @@ public class ErrorProducer extends AbsSdnObject {
         try{
             Thread.sleep(10);
         } catch (InterruptedException e) {
-            logger.error(e);
+            throw new RuntimeException(e);
         }
     }
 
