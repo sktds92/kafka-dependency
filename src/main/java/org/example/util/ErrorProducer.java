@@ -37,4 +37,8 @@ public class ErrorProducer extends AbsSdnObject {
     public void send(ProducerRecord<String,String> message){
         this.kafkaProducer.send(message);
     }
+
+    public void close(){
+        this.kafkaProducer.close();
+    }
 }
