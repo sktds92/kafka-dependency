@@ -44,7 +44,7 @@ public class Configure extends AbsSdnObject {
                 try {
                     this.properties.put(key, System.getenv(group));
                 }catch (NullPointerException e){
-                    logger.error("config not found: %s",key);
+                    logger.error(String.format("config not found: %s",key));
                     throw new Exception(e);
                 }
             }
