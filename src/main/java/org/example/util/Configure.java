@@ -29,17 +29,24 @@ public class Configure extends AbsSdnObject {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private void readSystemEnvironments() {
+    private void readSystemEnvironments() throws Exception {
         Pattern pattern = Pattern.compile("\\$\\{([^}]+)\\}");
         for(String key: this.properties.stringPropertyNames()){
             String value = this.properties.getProperty(key);
             Matcher matcher = pattern.matcher(value);
             if(matcher.find()){
                 String group = matcher.group().substring(2, matcher.group().length()-1);
-                this.properties.put(key,System.getenv(group));
+                try {
+                    this.properties.put(key, System.getenv(group));
+                }catch (NullPointerException e){
+                    logger.error("config not found: %s",key);
+                    throw new Exception(e);
+                }
             }
         }
     }
@@ -80,6 +87,6 @@ public class Configure extends AbsSdnObject {
     }
 
     public String getProperty(String project) {
-        return this.properties.getProperty(project);
+            return this.properties.getProperty(project);
     }
 }
